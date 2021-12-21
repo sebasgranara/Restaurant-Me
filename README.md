@@ -49,3 +49,23 @@ User model
     city: String,
 }
 ```
+## Routes
+​
+| Name            | Method | Endpoint                      | Description                                            | Body                | Redirects       |
+| --------------- | ------ | ----------------------------- | ------------------------------------------------       |-------------------- | --------------- |
+| Home            | GET    | /                             | See the main page                                      |                      |                 |
+| Log in form     | GET    | /login                        | See the form to log in                                 |                      |                 |
+| Log in          | POST   | /login                        | Log in the user                                        | {mail, password}     | /               |
+| Sign Up form    | GET    | /signup                       | See the form to sign up                                |                      |                 |
+| Sign Up         | POST   | /signup                       | Sign up a user                                         |  {mail, password}    | /profile        |
+| Log out         | GET    | /logout                       | Log out a user                                         |                      | /               |
+| Home            | GET    | /restaurants                  | See user's restaurant collection                       |                      |                 |
+| Restaurant      | GET    | /restaurantid                 | Read restaurant's information                          |                      |                 |
+| Search form     | GET    |                               |                                                        |                      |
+| Search          | POST   |                               |                                                        |                      |
+| Rest. add form  | GET    | /restaurants/new              | See form to upload a new restaurant                    |                      |                 |
+| Rest. add       | POST   | /restaurants/new              | Upload a restaurant to user's collection               |              /restaurants/restaurantid |
+| Rest. edit form | GET    | /restaurants/restaurantid/edit| See edit form with restaurant's preloaded information  |                      |                 |
+| Rest. edit      | POST   | /userid/restaurants/restaurantid/edit| Add restaurant's new information                |              /restaurants/restaurantid  
+| Rest. delete    | POST   | /userid/restaurants/restaurantid/delete | Delete restaurants from user's collection    |                      | /restaurants  
+
