@@ -33,4 +33,24 @@ router.post('/signup', (req, res, next) => {
     .catch(error => next(error));
 });
 
+router.get('/login', (req, res, next) => {
+  res.render('auth/login');
+});
+
+router.post('/login', async (req, res, next) => {
+  const { email, pass } = req.body;
+  const user = await User.findOne({ email }).exec();
+  if (user) {
+    const result = await bcryptjs.compare(pass, user.hashedPassword);
+    if (result) {
+      req.session.logged = true;
+      req.session.user = user;
+      console.log("Success!",user);
+    } else {
+      console.log("ERROR");
+      res.redirect('/login');
+    }
+  }
+});
+
 module.exports = router;
