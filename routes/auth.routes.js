@@ -6,7 +6,7 @@ const router = new Router();
 const bcryptjs = require('bcryptjs');
 
 const saltRounds = 10;
-const User = require('../models/user.js');
+const User = require('../models/user');
 
 // GET route ==> to display the signup form to users
 router.get('/signup', (req, res) => res.render('auth/signup'));
@@ -23,11 +23,12 @@ router.post('/signup', (req, res, next) => {
     .then(hashedPassword => {
       return User.create({
         email,
-        passwordHash: hashedPassword,
+        hashedPassword,
       });
     })
     .then(userFromDB => {
       console.log('Newly created user is: ', userFromDB);
+      res.redirect('/login');
     })
     .catch(error => next(error));
 });
