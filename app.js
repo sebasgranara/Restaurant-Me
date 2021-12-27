@@ -4,6 +4,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
+const { isLoggedIn } = require('./middlewares');
 
 const { MONGO_URI } = require('./db/index');
 
@@ -40,7 +41,7 @@ function setupApp() {
 
   app.use('/', baseRoutes());
 
-  app.use('/restaurants', restaurantsRoutes());
+  app.use('/restaurants', isLoggedIn, restaurantsRoutes());
 
   app.use('/', authRouter);
 

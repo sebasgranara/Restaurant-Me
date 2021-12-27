@@ -45,9 +45,10 @@ router.post('/login', async (req, res, next) => {
     if (result) {
       req.session.logged = true;
       req.session.user = user;
-      console.log("Success!",user);
+      console.log('Success!', user);
+      res.redirect('/restaurants');
     } else {
-      console.log("ERROR");
+      console.log('ERROR');
       res.redirect('/login');
     }
   }
