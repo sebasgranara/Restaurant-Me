@@ -1,2 +1,17 @@
 <h1>Home page</h1>
-{{> card }}
+<h1>My restaurants</h1>
+<div id="restaurant-list-container">
+    {{#each returnedRestaurants}}
+        <div id="restaurant-card">
+            <h2>{{name}}</h2>
+            <p>Neighborhood: {{neighborhood}}</p>
+            <p>Cuisine: {{cuisine}}</p>
+            <p>Budget: {{budget}}</p>
+            <p>Priority: {{priority}}</p>
+            <p>Ambience: {{ambience}}</p>
+            <p>Notes: {{notes}}</p>
+        </div>
+    {{/each}}
+</div>
+
+<a href="/new"> Create new restaurants here!</a>

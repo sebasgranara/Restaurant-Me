@@ -38,7 +38,7 @@ function setupApp() {
 
   app.use('/', baseRoutes());
 
-  app.use('/restaurants', restaurantsRoutes());
+  app.use('/', restaurantsRoutes());
 
   app.use((req, res) => {
     res.render('404.hbs');
