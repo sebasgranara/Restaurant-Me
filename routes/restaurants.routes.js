@@ -7,11 +7,11 @@ function restaurantRoutes() {
 
   // show preview of all restaurants on home page
 
-  router.get('/', (req, res, next) => {
+  router.get('/restaurants', (req, res, next) => {
 
     Restaurant.find()
     .then(returnedRestaurants => {
-        res.render('home.hbs', { returnedRestaurants });
+        res.render('restaurants/restaurants-home.hbs', { returnedRestaurants });
         console.log(returnedRestaurants);
     })
     .catch(error => console.log('Error while finding restaurants occurred', error));
@@ -19,22 +19,22 @@ function restaurantRoutes() {
 
   // create new restaurant
 
-  router.get('/new', (req, res, next) => {
+  router.get('/restaurants/new', (req, res, next) => {
     res.render('restaurants/new-restaurant');
   });
 
-  router.post('/new', (req, res, next) => {
+  router.post('/restaurants/new', (req, res, next) => {
     const { name, neighborhood, cuisine, budget, ambience, priority, notes } = req.body;
     Restaurant.create({ name, neighborhood, cuisine, budget, ambience, priority, notes })
-      .then(() => res.redirect('/'))
+      .then(() => res.redirect('/restaurants'))
       .catch(error => {
         console.log('Error while creating restaurant occurred', error);
-        res.redirect('/new');
+        res.redirect('/restaurants/new');
       });
   });
 
   // show restaurant details
-  router.get('/:id', (req, res, next) => {
+  router.get('/restaurants/:id', (req, res, next) => {
     const { id } = req.params;
 
     Restaurant.findById(id)
@@ -46,10 +46,10 @@ function restaurantRoutes() {
 
   // delete restaurant
 
-  router.post('/:id/delete', (req, res, next) => {
+  router.post('/restaurants/:id/delete', (req, res, next) => {
     const { id } = req.params;
     Restaurant.findByIdAndDelete(id)
-      .then(() => res.redirect('/'))
+      .then(() => res.redirect('/restaurants'))
       .catch(error => console.log('Error while deleting restaurant occurred'));
   });
 
