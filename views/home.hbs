@@ -3,13 +3,15 @@
 <div id="restaurant-list-container">
     {{#each returnedRestaurants}}
         <div id="restaurant-card">
-            <h2>{{name}}</h2>
-            <p>Neighborhood: {{neighborhood}}</p>
-            <p>Cuisine: {{cuisine}}</p>
-            <p>Budget: {{budget}}</p>
+
+            <a href="/{{id}}">
+                <h2>{{name}}</h2>
+            </a>
             <p>Priority: {{priority}}</p>
-            <p>Ambience: {{ambience}}</p>
-            <p>Notes: {{notes}}</p>
+            <p>Cuisine: {{cuisine}}</p>
+            <p>Neighborhood: {{neighborhood}}</p>
+            <p>Budget: {{budget}}</p>
+
         </div>
     {{/each}}
 </div>
