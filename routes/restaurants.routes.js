@@ -53,6 +53,27 @@ function restaurantRoutes() {
       .catch(error => console.log('Error while deleting restaurant occurred'));
   });
 
+  // update restaurant
+
+  router.get('/:id/update', (req, res, next) => {
+    const { id } = req.params;
+
+    Restaurant.findById(id)
+      .then(restaurantToEdit => {
+        res.render('restaurants/update-restaurant', { restaurantToEdit });
+      })
+      .catch(error => next(error));
+  });
+
+  router.post('/:id/update', (req, res, next) => {
+    const { id } = req.params;
+    const { name, neighborhood, cuisine, budget, ambience, priority, notes } = req.body;
+
+    Restaurant.findByIdAndUpdate(id, { name, neighborhood, cuisine, budget, ambience, priority, notes })
+      .then(() => res.redirect('/'))
+      .catch(error => console.log('Error while updating restaurant occurred'));
+  });
+
   return router;
 }
 
