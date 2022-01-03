@@ -55,7 +55,7 @@ function restaurantRoutes() {
 
   // update restaurant
 
-  router.get('/:id/update', (req, res, next) => {
+  router.get('/restaurants/:id/update', (req, res, next) => {
     const { id } = req.params;
 
     Restaurant.findById(id)
@@ -65,12 +65,12 @@ function restaurantRoutes() {
       .catch(error => next(error));
   });
 
-  router.post('/:id/update', (req, res, next) => {
+  router.post('/restaurants/:id/update', (req, res, next) => {
     const { id } = req.params;
     const { name, neighborhood, cuisine, budget, ambience, priority, notes } = req.body;
 
     Restaurant.findByIdAndUpdate(id, { name, neighborhood, cuisine, budget, ambience, priority, notes })
-      .then(() => res.redirect('/'))
+      .then(() => res.redirect('/restaurants'))
       .catch(error => console.log('Error while updating restaurant occurred'));
   });
 

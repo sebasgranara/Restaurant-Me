@@ -11,14 +11,6 @@ function baseRoutes() {
       next(e);
     }
   });
-  // router.get('/', (req, res, next) => {
-  //   Restaurant.find()
-  //     .then(returnedRestaurants => {
-  //       res.render('home.hbs', { returnedRestaurants });
-  //       console.log(returnedRestaurants);
-  //     })
-  //     .catch(error => console.log('Error while finding restaurants occurred', error));
-  // });
 
   return router;
 }
