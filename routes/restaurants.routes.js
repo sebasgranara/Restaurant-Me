@@ -44,6 +44,15 @@ function restaurantRoutes() {
       .catch(error => next(error));
   });
 
+  // delete restaurant
+
+  router.post('/:id/delete', (req, res, next) => {
+    const { id } = req.params;
+    Restaurant.findByIdAndDelete(id)
+      .then(() => res.redirect('/'))
+      .catch(error => console.log('Error while deleting restaurant occurred'));
+  });
+
   return router;
 }
 

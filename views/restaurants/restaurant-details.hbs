@@ -10,6 +10,10 @@
         <p>Ambience: {{foundRestaurant.ambience}}</p>
         <p>Notes: {{foundRestaurant.notes}}</p>
 
+        <form method="POST" action="/{{foundRestaurant.id}}/delete">
+            <button>Delete restaurant</button>
+        </form>
+
 </div>
 
 <a href="/"> Go back to all restaurants here!</a>
