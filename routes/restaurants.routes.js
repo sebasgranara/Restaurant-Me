@@ -74,6 +74,8 @@ function restaurantRoutes() {
       .catch(error => console.log('Error while updating restaurant occurred'));
   });
 
+  // find restaurant (search all restaurants by criteria)
+
   return router;
 }
 
