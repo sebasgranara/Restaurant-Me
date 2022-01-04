@@ -1,0 +1,25 @@
+<h2>see your restaurant detailed info here</h2>
+<div id="restaurant-card-container">
+    <div>
+        <h2>{{foundRestaurant.name}}</h2>
+
+        <p>Neighborhood: {{foundRestaurant.neighborhood}}</p>
+        <p>Cuisine: {{foundRestaurant.cuisine}}</p>
+        <p>Budget: {{foundRestaurant.budget}}</p>
+        <p>Priority: {{foundRestaurant.priority}}</p>
+        <p>Ambience: {{foundRestaurant.ambience}}</p>
+        <p>Notes: {{foundRestaurant.notes}}</p>
+        <br>
+    </div>
+    <div>
+        <form method="POST" action="/restaurants/{{foundRestaurant.id}}/delete">
+            <button>Delete restaurant</button>
+        </form>
+
+        <form method="GET" action="/restaurants/{{foundRestaurant.id}}/update">
+            <button type="submit">Update restaurant</button>
+        </form>
+    </div>
+</div>
+
+<a href="/restaurants"> Go back to all restaurants here!</a>

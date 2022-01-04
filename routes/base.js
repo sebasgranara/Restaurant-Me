@@ -5,7 +5,7 @@ function baseRoutes() {
 
   router.get('/', async (req, res, next) => {
     try {
-      res.render('home.hbs', { name: 'Ironhack' });
+      res.render('home.hbs');
     } catch (e) {
       next(e);
     }

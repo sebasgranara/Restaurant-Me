@@ -1,0 +1,53 @@
+<h2>update restaurant {{restaurantToEdit.name}} info here</h2>
+<form action="/restaurants/{{restaurantToEdit.id}}/update" method="post">
+    <label> Name:
+        <input type="text" name="name" value="{{restaurantToEdit.name}}" />
+    </label>
+
+    <label> Neighborhood:
+        <input type="text" name="neighborhood" value="{{restaurantToEdit.neighborhood}}" />
+    </label>
+
+    <label> Cuisine:
+        <input type="text" name="cuisine" value="{{restaurantToEdit.cuisine}}" />
+    </label>
+
+    <label> Budget:
+        <select name="budget">
+            <option value="{{restaurantToEdit.budget}}">{{restaurantToEdit.budget}}</option>
+            <option value="10-20e">10-20e</option>
+            <option value="20-50e">20-50e</option>
+            <option value="51-100e">51-100e</option>
+            <option value="+100e">+100e</option>
+        </select>
+    </label>
+
+    <label>Priority:
+        <select name="priority">
+            <option value="Top Priority">Top Priority</option>
+            <option value="Must Go">Must Go</option>
+            <option value="Maybe">Maybe</option>
+            <option value="If Nothing Better To Do">If Nothing Better To Do</option>
+        </select>
+    </label>
+
+    <label>Ambience:
+        <select name="ambience">
+            <option value="formal">Formal</option>
+            <option value="formal">Casual</option>
+            <option value="business">Business</option>
+            <option value="with friends">With Friends</option>
+            <option value="date">Date</option>
+            <option value="hip">Hip</option>
+        </select>
+    </label>
+
+    <label> Notes:
+        <textarea rows="5" cols="50" name="notes" value="{{restaurantToEdit.notes}}">{{restaurantToEdit.notes}}</textarea>
+    </label>
+
+<form>
+    <button type="submit"> Update restaurant </button>
+</form>
+
+<a href="/restaurants"> List of all restaurants here!</a>
