@@ -8,13 +8,12 @@ function restaurantRoutes() {
   // show preview of all restaurants on home page
 
   router.get('/restaurants', (req, res, next) => {
-
     Restaurant.find()
-    .then(returnedRestaurants => {
+      .then(returnedRestaurants => {
         res.render('restaurants/restaurants-home.hbs', { returnedRestaurants });
         console.log(returnedRestaurants);
-    })
-    .catch(error => console.log('Error while finding restaurants occurred', error));
+      })
+      .catch(error => console.log('Error while finding restaurants occurred', error));
   });
 
   // create new restaurant
@@ -31,6 +30,23 @@ function restaurantRoutes() {
         console.log('Error while creating restaurant occurred', error);
         res.redirect('/restaurants/new');
       });
+  });
+
+  // find restaurant (search all restaurants by criteria)
+
+  router.get('/restaurants/find', (req, res, next) => {
+    res.render('restaurants/find-restaurant');
+  });
+
+  router.post('/restaurants/find', (req, res, next) => {
+    const { name } = req.body;
+    // Restaurant.find({ $text: { $search: name } })
+    Restaurant.find({ name: name })
+          .then(foundRestaurants => {
+            res.render('restaurants/restaurants-filtered.hbs', { foundRestaurants });
+            console.log(foundRestaurants);
+          })
+          .catch(error => console.log('Error while finding restaurants occurred', error));
   });
 
   // show restaurant details
@@ -73,8 +89,6 @@ function restaurantRoutes() {
       .then(() => res.redirect('/restaurants'))
       .catch(error => console.log('Error while updating restaurant occurred'));
   });
-
-  // find restaurant (search all restaurants by criteria)
 
   return router;
 }

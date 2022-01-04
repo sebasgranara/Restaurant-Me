@@ -1,20 +1,20 @@
 <h2>Find a restaurant here</h2>
-<form action="/restaurants/{{restaurantToEdit.id}}/update" method="post">
+<form action="/restaurants/find" method="post">
+
     <label> Name:
-        <input type="text" name="name" value="{{restaurantToEdit.name}}" />
+        <input type="text" name="name" placeholder="Find restaurant"/>
     </label>
 
-    <label> Neighborhood:
-        <input type="text" name="neighborhood" value="{{restaurantToEdit.neighborhood}}" />
+    {{!-- <label> Neighborhood:
+        <input type="text" name="neighborhood" />
     </label>
 
     <label> Cuisine:
-        <input type="text" name="cuisine" value="{{restaurantToEdit.cuisine}}" />
+        <input type="text" name="cuisine" />
     </label>
 
     <label> Budget:
         <select name="budget">
-            <option value="{{restaurantToEdit.budget}}">{{restaurantToEdit.budget}}</option>
             <option value="10-20e">10-20e</option>
             <option value="20-50e">20-50e</option>
             <option value="51-100e">51-100e</option>
@@ -40,15 +40,10 @@
             <option value="date">Date</option>
             <option value="hip">Hip</option>
         </select>
-    </label>
+    </label> --}}
 
-    <label> Notes:
-        <textarea rows="5" cols="50" name="notes"
-            value="{{restaurantToEdit.notes}}">{{restaurantToEdit.notes}}</textarea>
-    </label>
 
-    <form>
-        <button type="submit"> Update restaurant </button>
-    </form>
+    <button type="submit"> Find </button>
+</form>
 
-    <a href="/restaurants"> List of all restaurants here!</a>
+<a href="/restaurants"> List of all restaurants here!</a>
