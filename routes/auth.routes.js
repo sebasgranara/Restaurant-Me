@@ -9,8 +9,10 @@ const saltRounds = 10;
 const mongoose = require('mongoose');
 const User = require('../models/user');
 
+const { isLoggedIn, isLoggedOut } = require('../middlewares/index');
+
 // GET route ==> to display the signup form to users
-router.get('/signup', (req, res) => res.render('auth/signup'));
+router.get('/signup', isLoggedOut, (req, res) => res.render('auth/signup'));
 
 // POST route ==> to process form data
 router.post('/signup', (req, res, next) => {
@@ -60,7 +62,7 @@ router.post('/signup', (req, res, next) => {
     });
 });
 
-router.get('/login', (req, res, next) => {
+router.get('/login', isLoggedOut, (req, res, next) => {
   res.render('auth/login');
 });
 
