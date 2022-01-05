@@ -1,4 +1,3 @@
-
 const express = require('express');
 const Restaurant = require('../models/restaurant.model');
 
@@ -7,23 +6,22 @@ function restaurantRoutes() {
 
   // show preview of all restaurants on home page
 
-  router.get('/restaurants', (req, res, next) => {
-
+  router.get('/', (req, res, next) => {
     Restaurant.find()
-    .then(returnedRestaurants => {
+      .then(returnedRestaurants => {
         res.render('restaurants/restaurants-home.hbs', { returnedRestaurants });
         console.log(returnedRestaurants);
-    })
-    .catch(error => console.log('Error while finding restaurants occurred', error));
+      })
+      .catch(error => console.log('Error while finding restaurants occurred', error));
   });
 
   // create new restaurant
 
-  router.get('/restaurants/new', (req, res, next) => {
+  router.get('/new', (req, res, next) => {
     res.render('restaurants/new-restaurant');
   });
 
-  router.post('/restaurants/new', (req, res, next) => {
+  router.post('/new', (req, res, next) => {
     const { name, neighborhood, cuisine, budget, ambience, priority, notes } = req.body;
     Restaurant.create({ name, neighborhood, cuisine, budget, ambience, priority, notes })
       .then(() => res.redirect('/restaurants'))
@@ -34,7 +32,7 @@ function restaurantRoutes() {
   });
 
   // show restaurant details
-  router.get('/restaurants/:id', (req, res, next) => {
+  router.get('/:id', (req, res, next) => {
     const { id } = req.params;
 
     Restaurant.findById(id)
@@ -46,7 +44,7 @@ function restaurantRoutes() {
 
   // delete restaurant
 
-  router.post('/restaurants/:id/delete', (req, res, next) => {
+  router.post('/:id/delete', (req, res, next) => {
     const { id } = req.params;
     Restaurant.findByIdAndDelete(id)
       .then(() => res.redirect('/restaurants'))
@@ -55,7 +53,7 @@ function restaurantRoutes() {
 
   // update restaurant
 
-  router.get('/restaurants/:id/update', (req, res, next) => {
+  router.get('/:id/update', (req, res, next) => {
     const { id } = req.params;
 
     Restaurant.findById(id)
@@ -65,7 +63,7 @@ function restaurantRoutes() {
       .catch(error => next(error));
   });
 
-  router.post('/restaurants/:id/update', (req, res, next) => {
+  router.post('/:id/update', (req, res, next) => {
     const { id } = req.params;
     const { name, neighborhood, cuisine, budget, ambience, priority, notes } = req.body;
 

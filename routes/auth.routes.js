@@ -9,13 +9,13 @@ const saltRounds = 10;
 const mongoose = require('mongoose');
 const User = require('../models/user');
 
-const { isLoggedIn, isLoggedOut } = require('../middlewares/index');
+const { isLoggedOut } = require('../middlewares/index');
 
 // GET route ==> to display the signup form to users
 router.get('/signup', isLoggedOut, (req, res) => res.render('auth/signup'));
 
 // POST route ==> to process form data
-router.post('/signup', (req, res, next) => {
+router.post('/signup', isLoggedOut, (req, res, next) => {
   // console.log("The form data: ", req.body);
 
   const { email, password } = req.body;
@@ -62,32 +62,38 @@ router.post('/signup', (req, res, next) => {
     });
 });
 
-router.get('/login', isLoggedOut, (req, res, next) => {
+router.get('/login', isLoggedOut, (req, res) => {
   res.render('auth/login');
 });
 
-router.post('/login', async (req, res, next) => {
+router.post('/login', isLoggedOut, async (req, res, next) => {
   const { email, pass } = req.body;
 
-  if (email === '' || password === '') {
+  if (email === '' || pass === '') {
     res.render('auth/login', {
       errorMessage: 'Please enter both, email and password to login.',
     });
     return;
   }
-  const user = await User.findOne({ email }).exec();
-  if (user) {
-    const result = await bcryptjs.compare(pass, user.hashedPassword);
-    if (result) {
-      req.session.logged = true;
-      req.session.user = user;
-      console.log('Success!', user);
-      res.redirect('/restaurants');
-    } else {
-      console.log('ERROR');
-      res.redirect('/login');
-    }
-  }
+  User.findOne({ email })
+    .then(user => {
+      if (user) {
+        if (bcryptjs.compareSync(pass, user.hashedPassword)) {
+          req.session.logged = true;
+          req.session.user = user;
+          console.log('Success!', user);
+          res.redirect('/restaurants');
+        } else {
+          console.log('ERROR');
+          res.render('auth/login', { errorMessage: 'Incorrect password.' });
+        }
+      } else {
+        res.render('auth/login', { errorMessage: 'Email is not registered.' });
+      }
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 router.post('/logout', (req, res, next) => {

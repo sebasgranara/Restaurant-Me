@@ -5,6 +5,10 @@ function baseRoutes() {
 
   router.get('/', async (req, res, next) => {
     try {
+      if (req.session.logged) {
+        res.redirect('/restaurants');
+        return;
+      }
       res.render('home.hbs');
     } catch (e) {
       next(e);

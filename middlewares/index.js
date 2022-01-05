@@ -6,10 +6,10 @@ const isLoggedIn = (req, res, next) => {
   }
 };
 
-//agregado
+// agregado
 const isLoggedOut = (req, res, next) => {
   if (req.session.currentUser) {
-    return res.redirect('/');
+    res.redirect('/');
   }
   next();
 };
