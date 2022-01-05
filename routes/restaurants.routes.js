@@ -5,10 +5,10 @@ const Restaurant = require('../models/restaurant.model');
 function restaurantRoutes() {
   const router = express.Router();
 
-  // show preview of all restaurants on home page
+  // show preview of all restaurants on home page with alpha case insensitive sorting
 
   router.get('/restaurants', (req, res, next) => {
-    Restaurant.find()
+    Restaurant.find().collation({locale:'en',strength: 2}).sort({name:1})
       .then(returnedRestaurants => {
         res.render('restaurants/restaurants-home.hbs', { returnedRestaurants });
         console.log(returnedRestaurants);
@@ -39,14 +39,15 @@ function restaurantRoutes() {
   });
 
   router.post('/restaurants/find', (req, res, next) => {
-    const { name } = req.body;
+    const { name, cuisine, priority } = req.body;
     // Restaurant.find({ $text: { $search: name } })
-    Restaurant.find({ name: name })
-          .then(foundRestaurants => {
-            res.render('restaurants/restaurants-filtered.hbs', { foundRestaurants });
-            console.log(foundRestaurants);
-          })
-          .catch(error => console.log('Error while finding restaurants occurred', error));
+    // Restaurant.find({ $and: [{ name: name }, { cuisine: cuisine }, { priority: priority }] })
+    Restaurant.find({ $and: [{ cuisine: cuisine }, { priority: priority }] })
+      .then(foundRestaurants => {
+        res.render('restaurants/restaurants-filtered.hbs', { foundRestaurants });
+        console.log(foundRestaurants);
+      })
+      .catch(error => console.log('Error while finding restaurants occurred', error));
   });
 
   // show restaurant details
