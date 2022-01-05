@@ -39,6 +39,13 @@ router.get('/login', (req, res, next) => {
 
 router.post('/login', async (req, res, next) => {
   const { email, pass } = req.body;
+
+  if (email === '' || password === '') {
+    res.render('auth/login', {
+      errorMessage: 'Please enter both, email and password to login.',
+    });
+    return;
+  }
   const user = await User.findOne({ email }).exec();
   if (user) {
     const result = await bcryptjs.compare(pass, user.hashedPassword);
