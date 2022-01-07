@@ -33,11 +33,11 @@ function restaurantRoutes() {
 
   // find restaurant (search all restaurants by criteria)
 
-  router.get('/restaurants/find', (req, res, next) => {
+  router.get('/find', (req, res, next) => {
     res.render('restaurants/find-restaurant');
   });
 
-  router.post('/restaurants/find', (req, res, next) => {
+  router.post('/find', (req, res, next) => {
     const { name, cuisine, priority } = req.body;
     // Restaurant.find({ $text: { $search: name } })
     // Restaurant.find({ $and: [{ name: name }, { cuisine: cuisine }, { priority: priority }] })
