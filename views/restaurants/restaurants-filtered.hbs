@@ -1,8 +1,7 @@
-<h1>My restaurants</h1>
+<h2>Restaurants that match your search critiria</h2>
 <div id="restaurant-list-container">
-    {{#each returnedRestaurants}}
-    <div id="restaurant-card">
-
+    {{#each foundRestaurants }}
+    <div id="filtered-restaurant-card">
         <a href="/restaurants/{{id}}">
             <h2>{{name}}</h2>
         </a>
@@ -14,6 +13,5 @@
     </div>
     {{/each}}
 </div>
-
-<a href="/restaurants/new"> Create new restaurant here!</a>
+<a href="/restaurants"> List of all restaurants here!</a>
 <a href="/restaurants/find"> Find a restaurant here!</a>
