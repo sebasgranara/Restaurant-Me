@@ -1,5 +1,6 @@
 const express = require('express');
 const Restaurant = require('../models/restaurant.model');
+const User = require('../models/user');
 
 function restaurantRoutes() {
   const router = express.Router();
@@ -7,12 +8,17 @@ function restaurantRoutes() {
   // show preview of all restaurants on home page with alpha case insensitive sorting
 
   router.get('/', (req, res, next) => {
-    Restaurant.find().collation({locale:'en',strength: 2}).sort({name:1})
+    // async await
+    const userId = req.session.user._id;
+    const currentUser = req.session.user;
+    Restaurant.find({ userId })
+      .collation({ locale: 'en', strength: 2 })
+      .sort({ name: 1 })
       .then(returnedRestaurants => {
-        res.render('restaurants/restaurants-home.hbs', { returnedRestaurants });
+        res.render('restaurants/restaurants-home.hbs', { returnedRestaurants, currentUser });
         console.log(returnedRestaurants);
       })
-      .catch(error => console.log('Error while finding restaurants occurred', error));
+      .catch(error => console.log('Error while finding restaurants occurred', error)); // send to eeror view
   });
 
   // create new restaurant
@@ -23,11 +29,13 @@ function restaurantRoutes() {
 
   router.post('/new', (req, res, next) => {
     const { name, neighborhood, cuisine, budget, ambience, priority, notes } = req.body;
-    Restaurant.create({ name, neighborhood, cuisine, budget, ambience, priority, notes })
+    const userId = req.session.user._id;
+    // async await
+    Restaurant.create({ userId, name, neighborhood, cuisine, budget, ambience, priority, notes })
       .then(() => res.redirect('/restaurants'))
       .catch(error => {
         console.log('Error while creating restaurant occurred', error);
-        res.redirect('/restaurants/new');
+        res.redirect('/restaurants/new'); //send to error view not redirect
       });
   });
 
@@ -38,12 +46,19 @@ function restaurantRoutes() {
   });
 
   router.post('/find', (req, res, next) => {
-    const { name, cuisine, priority } = req.body;
+    const { name, neighborhood, cuisine, priority, budget, ambience } = req.body;
     // Restaurant.find({ $text: { $search: name } })
-    // Restaurant.find({ $and: [{ name: name }, { cuisine: cuisine }, { priority: priority }] })
-    Restaurant.find({ $and: [{ cuisine: cuisine }, { priority: priority }] })
+    // const query = {};
+    // if (name) {
+    //   query.name = name;
+    // }
+    // if ( neighborhood ) {
+    //   query.neighborhood = neighborhood
+    // }
+
+    Restaurant.find({ $or: [{ name: name }, { neighborhood: neighborhood }, { cuisine: cuisine }, { priority: priority }, { budget: budget }, {ambience: ambience}] }).collation({locale:'en',strength: 2}).sort({name:1})
       .then(foundRestaurants => {
-        res.render('restaurants/restaurants-filtered.hbs', { foundRestaurants });
+        res.render('restaurants/restaurants-filtered.hbs', { foundRestaurants /* , budget: config.budget */ });
         console.log(foundRestaurants);
       })
       .catch(error => console.log('Error while finding restaurants occurred', error));
@@ -51,7 +66,7 @@ function restaurantRoutes() {
 
   // show restaurant details
   router.get('/:id', (req, res, next) => {
-    const { id } = req.params;
+    const { id } = req.params; // check if id is correct
 
     Restaurant.findById(id)
       .then(foundRestaurant => {
@@ -63,16 +78,16 @@ function restaurantRoutes() {
   // delete restaurant
 
   router.post('/:id/delete', (req, res, next) => {
-    const { id } = req.params;
+    const { id } = req.params; // check if id is correct
     Restaurant.findByIdAndDelete(id)
       .then(() => res.redirect('/restaurants'))
-      .catch(error => console.log('Error while deleting restaurant occurred'));
+      .catch(error => console.log('Error while deleting restaurant occurred')); // send to error middleware
   });
 
   // update restaurant
 
   router.get('/:id/update', (req, res, next) => {
-    const { id } = req.params;
+    const { id } = req.params; // check id
 
     Restaurant.findById(id)
       .then(restaurantToEdit => {
@@ -82,12 +97,12 @@ function restaurantRoutes() {
   });
 
   router.post('/:id/update', (req, res, next) => {
-    const { id } = req.params;
+    const { id } = req.params; // check id
     const { name, neighborhood, cuisine, budget, ambience, priority, notes } = req.body;
 
     Restaurant.findByIdAndUpdate(id, { name, neighborhood, cuisine, budget, ambience, priority, notes })
       .then(() => res.redirect('/restaurants'))
-      .catch(error => console.log('Error while updating restaurant occurred'));
+      .catch(error => console.log('Error while updating restaurant occurred', error));
   });
 
   return router;

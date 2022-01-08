@@ -5,11 +5,36 @@
     </label>
 
     <label> Neighborhood:
-        <input type="text" name="neighborhood" value="{{restaurantToEdit.neighborhood}}" />
+        <select name="neighborhood">
+            <option value="{{restaurantToEdit.neighborhood}}">{{restaurantToEdit.neighborhood}}</option>
+            <option value="Raval">Raval</option>
+            <option value="Born">Born</option>
+            <option value="Barceloneta">Barceloneta</option>
+            <option value="Eixample Left Side">Eixample Left Side</option>
+            <option value="Eixample Right Side">Eixample Right Side</option>
+            <option value="Gracia">Gracia</option>
+            <option value="Poble Sec">Poble Sec</option>
+            <option value="Uptown">Uptown</option>
+            <option value="Sants">Sants</option>
+            <option value="Poble Nou">Poble Nou</option>
+            <option value="Other">Other</option>
+        </select>
     </label>
 
     <label> Cuisine:
-        <input type="text" name="cuisine" value="{{restaurantToEdit.cuisine}}" />
+        <select name="cuisine">
+            <option value="{{restaurantToEdit.cuisine}}">{{restaurantToEdit.cuisine}}</option>
+            <option value="Italian">Italian</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Creative">Creative</option>
+            <option value="Venezuelan">Venezuelan</option>
+            <option value="Tapas">Tapas</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Indian">Indian</option>
+            <option value="Mexican">Mexican</option>
+            <option value="Thai">Thai</option>
+            <option value="Other">Other</option>
+        </select>
     </label>
 
     <label> Budget:
@@ -24,6 +49,7 @@
 
     <label>Priority:
         <select name="priority">
+            <option value="{{restaurantToEdit.priority}}">{{restaurantToEdit.priority}}</option>
             <option value="Top Priority">Top Priority</option>
             <option value="Must Go">Must Go</option>
             <option value="Maybe">Maybe</option>
@@ -33,8 +59,9 @@
 
     <label>Ambience:
         <select name="ambience">
+            <option value="{{restaurantToEdit.ambience}}">{{restaurantToEdit.ambience}}</option>
             <option value="formal">Formal</option>
-            <option value="formal">Casual</option>
+            <option value="casual">Casual</option>
             <option value="business">Business</option>
             <option value="with friends">With Friends</option>
             <option value="date">Date</option>

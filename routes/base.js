@@ -3,9 +3,10 @@ const express = require('express');
 function baseRoutes() {
   const router = express.Router();
 
-  router.get('/', async (req, res, next) => {
+  router.get('/', async (req, res, next) => { // call isLoggedIn function in params
     try {
-      if (req.session.logged) {
+      if (req.session.logged) { // there is a middleware for that
+
         res.redirect('/restaurants');
         return;
       }

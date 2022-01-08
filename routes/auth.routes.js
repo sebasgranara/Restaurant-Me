@@ -18,9 +18,9 @@ router.get('/signup', isLoggedOut, (req, res) => res.render('auth/signup'));
 router.post('/signup', isLoggedOut, (req, res, next) => {
   // console.log("The form data: ", req.body);
 
-  const { email, password } = req.body;
+  const { name, email, password } = req.body;
 
-  if (!email || !password) {
+  if (!name || !email || !password) {
     res.render('auth/signup', {
       errorMessage: 'All fields are mandatory. Please provide your email and password.',
     });
@@ -41,6 +41,7 @@ router.post('/signup', isLoggedOut, (req, res, next) => {
     .then(salt => bcryptjs.hash(password, salt))
     .then(hashedPassword => {
       return User.create({
+        name,
         email,
         hashedPassword,
       });

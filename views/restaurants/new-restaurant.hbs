@@ -6,15 +6,49 @@
     </label>
 
     <label> Neighborhood:
-        <input type="text" name="neighborhood" />
+        <select name="neighborhood">
+            <option value="TBE">TBE</option>
+            <option value="Raval">Raval</option>
+            <option value="Born">Born</option>
+            <option value="Barceloneta">Barceloneta</option>
+            <option value="Eixample Left Side">Eixample Left Side</option>
+            <option value="Eixample Right Side">Eixample Right Side</option>
+            <option value="Gracia">Gracia</option>
+            <option value="Poble Sec">Poble Sec</option>
+            <option value="Uptown">Uptown</option>
+            <option value="Sants">Sants</option>
+            <option value="Poble Nou">Poble Nou</option>
+            <option value="Other">Other</option>
+        </select>
     </label>
 
     <label> Cuisine:
-        <input type="text" name="cuisine" />
+        <select name="cuisine">
+            <option value="TBE">TBE</option>
+            <option value="Italian">Italian</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Creative">Creative</option>
+            <option value="Venezuelan">Venezuelan</option>
+            <option value="Tapas">Tapas</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Indian">Indian</option>
+            <option value="Mexican">Mexican</option>
+            <option value="Thai">Thai</option>
+            <option value="Other">Other</option>
+        </select>
     </label>
+
+    {{!-- <label> Budget:
+        <select name="budget">
+        {{#each config.budget }}
+            <option value="{{config.budget}}">TBE</option>
+        {{/each}}
+        </select>
+    </label> --}}
 
     <label> Budget:
         <select name="budget">
+            <option value="TBE">TBE</option>
             <option value="10-20e">10-20e</option>
             <option value="20-50e">20-50e</option>
             <option value="51-100e">51-100e</option>
@@ -24,6 +58,7 @@
 
     <label>Priority:
             <select name="priority">
+                <option value="TBE">TBE</option>
                 <option value="Top Priority">Top Priority</option>
                 <option value="Must Go">Must Go</option>
                 <option value="Maybe">Maybe</option>
@@ -33,8 +68,9 @@
 
     <label>Ambience:
         <select name="ambience">
+            <option value="TBE">TBE</option>
             <option value="formal">Formal</option>
-            <option value="formal">Casual</option>
+            <option value="casual">Casual</option>
             <option value="business">Business</option>
             <option value="with friends">With Friends</option>
             <option value="date">Date</option>

@@ -1,4 +1,8 @@
 <h1>My restaurants</h1>
+{{#if currentUser}}
+<h1>Welcome, {{ currentUser.name }}!</h2>
+{{/if}}
+
 <div id="restaurant-list-container">
     {{#each returnedRestaurants}}
     <div id="restaurant-card">
@@ -17,3 +21,4 @@
 
 <a href="/restaurants/new"> Create new restaurant here!</a>
 <a href="/restaurants/find"> Find a restaurant here!</a>
+
