@@ -4,6 +4,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
+const path = require('path');
 const { isLoggedIn } = require('./middlewares');
 
 const { MONGO_URI } = require('./db/index');
@@ -13,7 +14,8 @@ const restaurantsRoutes = require('./routes/restaurants.routes');
 
 const authRouter = require('./routes/auth.routes');
 
-handlebars.registerPartials(`${__dirname}/views/partials`);
+// handlebars.registerPartials(`${__dirname}/views/partials`);
+handlebars.registerPartials(path.join(__dirname + '/views/partials'));
 
 function setupApp() {
   const app = express();

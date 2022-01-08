@@ -1,0 +1,24 @@
+/* all restaurants view styling */
+
+body {
+  padding: 30px;
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+ 
+a {
+  color: gray;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+h1 {
+    font-size: 1.8em;
+}
+
+#rest-user-container {
+    padding-top: 20px;
+}
+
+img {
+  width: 250px;
+}

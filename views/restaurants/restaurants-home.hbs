@@ -1,12 +1,13 @@
-<h1>My restaurants</h1>
-{{#if currentUser}}
-<h1>Welcome, {{ currentUser.name }}!</h2>
-{{/if}}
+<div id="rest-user-container">
+    {{#if currentUser}}
+        <h1>{{ currentUser.name }}'s restaurants</h2>
+    {{/if}}
+</div>
 
-<div id="restaurant-list-container">
+{{!-- <div id="restaurant-list-container">
     {{#each returnedRestaurants}}
     <div id="restaurant-card">
-
+        <img src='{{image}}'>
         <a href="/restaurants/{{id}}">
             <h2>{{name}}</h2>
         </a>
@@ -17,6 +18,10 @@
 
     </div>
     {{/each}}
+</div> --}}
+
+<div>
+    {{> restaurantBasicInfo }}
 </div>
 
 <a href="/restaurants/new"> Create new restaurant here!</a>
