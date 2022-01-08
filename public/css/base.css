@@ -91,6 +91,10 @@ ul {
 ul li {
   line-height: 20px;
 }
+
+img {
+  width: 200px;
+}
  
 #to-right {
   padding: 1.5em;
