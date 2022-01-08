@@ -38,15 +38,15 @@
         </select>
     </label>
 
-    {{!-- <label> Budget:
+    <label> Budget:
         <select name="budget">
-        {{#each config.budget }}
-            <option value="{{config.budget}}">TBE</option>
+        {{#each budget }}
+            <option value="{{this}}">{{this}}</option>
         {{/each}}
         </select>
-    </label> --}}
+    </label>
 
-    <label> Budget:
+    {{!-- <label> Budget:
         <select name="budget">
             <option value="TBE">TBE</option>
             <option value="10-20e">10-20e</option>
@@ -54,7 +54,7 @@
             <option value="51-100e">51-100e</option>
             <option value="+100e">+100e</option>
         </select>
-    </label>
+    </label> --}}
 
     <label>Priority:
             <select name="priority">

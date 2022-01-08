@@ -4,10 +4,10 @@ const config = require('../config');
 const { Schema } = mongoose;
 
 const restaurantSchema = new Schema({
-  // image: {
-  //     type: String,
-  //     default: /images/default-restaurant.png
-  // },
+  image: {
+    type: String,
+    default: '/images/restaurant/default-restaurant.png',
+  },
   userId: {
     type: Schema.Types.ObjectId,
     ref: 'User',

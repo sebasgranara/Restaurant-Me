@@ -1,6 +1,7 @@
 const express = require('express');
 const Restaurant = require('../models/restaurant.model');
 const User = require('../models/user');
+const config = require('../config');
 
 function restaurantRoutes() {
   const router = express.Router();
@@ -24,7 +25,8 @@ function restaurantRoutes() {
   // create new restaurant
 
   router.get('/new', (req, res, next) => {
-    res.render('restaurants/new-restaurant');
+
+    res.render('restaurants/new-restaurant', { budget: config.budget});
   });
 
   router.post('/new', (req, res, next) => {
