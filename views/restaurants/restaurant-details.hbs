@@ -4,15 +4,19 @@
         <img src='{{foundRestaurant.image}}'>
         <h2>{{foundRestaurant.name}}</h2>
         
-
-        <p>Neighborhood: {{foundRestaurant.neighborhood}}</p>
-        <p>Cuisine: {{foundRestaurant.cuisine}}</p>
-        <p>Budget: {{foundRestaurant.budget}}</p>
         <p>Priority: {{foundRestaurant.priority}}</p>
+        <p>Cuisine: {{foundRestaurant.cuisine}}</p>
+        <p>Neighborhood: {{foundRestaurant.neighborhood}}</p>
+        <p>Budget: {{foundRestaurant.budget}}</p>        
         <p>Ambience: {{foundRestaurant.ambience}}</p>
         <p>Notes: {{foundRestaurant.notes}}</p>
         <br>
     </div>
+
+{{!-- <div>
+    {{> restaurantBasicInfo }}
+</div> --}}
+
     <div>
         <form method="POST" action="/restaurants/{{foundRestaurant.id}}/delete">
             <button>Delete restaurant</button>

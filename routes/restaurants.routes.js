@@ -26,14 +26,14 @@ function restaurantRoutes() {
 
   router.get('/new', (req, res, next) => {
 
-    res.render('restaurants/new-restaurant', { budget: config.budget});
+    res.render('restaurants/new-restaurant', { budget: config.budget, veganMenu: config.boolean, glutenFree: config.boolean});
   });
 
   router.post('/new', (req, res, next) => {
-    const { name, neighborhood, cuisine, budget, ambience, priority, notes } = req.body;
+    const { name, neighborhood, cuisine, budget, ambience, priority, notes, veganMenu } = req.body;
     const userId = req.session.user._id;
     // async await
-    Restaurant.create({ userId, name, neighborhood, cuisine, budget, ambience, priority, notes })
+    Restaurant.create({ userId, name, neighborhood, cuisine, budget, ambience, priority, notes, veganMenu })
       .then(() => res.redirect('/restaurants'))
       .catch(error => {
         console.log('Error while creating restaurant occurred', error);

@@ -16,8 +16,8 @@ const restaurantSchema = new Schema({
   budget: { type: String, enum: config.budget }, // put in config file
   priority: { type: String, enum: ['TBE', 'Top Priority', 'Must Go', 'Maybe', 'If Nothing Better To Do'] },
   // openingHours: [String],
-  // veganMenu: { type: String, enum: ['yes', 'no'] },
-  // glutenFree: { type: String, enum: ['yes', 'no'] },
+  veganMenu: { type: String, enum: config.boolean },
+  glutenFree: { type: String, enum: config.boolean },
   neighborhood: String,
   cuisine: String,
   ambience: { type: String, enum: ['TBE', 'formal', 'casual', 'business', 'with friends', 'date', 'hip'] },

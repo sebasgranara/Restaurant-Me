@@ -78,6 +78,14 @@
         </select>
     </label>
 
+    <label> Vegan Menu:
+        <select name="veganMenu">
+            {{#each boolean }}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+        </select>
+    </label>
+
     <label> Notes:
         <textarea rows="5" cols="50" name="notes"></textarea>
 
