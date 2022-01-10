@@ -13,16 +13,13 @@ const restaurantSchema = new Schema({
     ref: 'User',
   },
   name: String,
-  budget: { type: String, enum: config.budget }, // put in config file
-  priority: { type: String, enum: ['TBE', 'Top Priority', 'Must Go', 'Maybe', 'If Nothing Better To Do'] },
-  // openingHours: [String],
-  veganMenu: { type: String, enum: config.boolean },
-  glutenFree: { type: String, enum: config.boolean },
-  neighborhood: String,
-  cuisine: String,
-  ambience: { type: String, enum: ['TBE', 'formal', 'casual', 'business', 'with friends', 'date', 'hip'] },
-  // bookingUrl: String,
-  // menuUrl: String,
+  budget: { type: String, enum: config.budget },
+  priority: { type: String, enum: config.priority },
+  neighborhood: { type: String, enum: config.neighborhood },
+  cuisine: { type: String, enum: config.cuisine },
+  ambience: { type: String, enum: config.ambience },
+  veganMenu: { type: String, enum: config.veganMenu },
+  glutenFree: { type: String, enum: config.glutenFree },
   notes: String,
 });
 
