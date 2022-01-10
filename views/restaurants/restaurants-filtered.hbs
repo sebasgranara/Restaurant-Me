@@ -1,10 +1,12 @@
-<h2>Restaurants that match your search critiria</h2>
+<h2>Restaurants that match your search critiria:</h2>
+
 <div id="restaurant-list-container">
     {{#each foundRestaurants }}
         <div id="filtered-restaurant-card">
             <a href="/restaurants/{{id}}">
                 <h2>{{name}}</h2>
             </a>
+            <img src='{{image}}'>
             <p>Priority: {{priority}}</p>
             <p>Cuisine: {{cuisine}}</p>
             <p>Neighborhood: {{neighborhood}}</p>
