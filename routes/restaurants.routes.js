@@ -50,15 +50,33 @@ function restaurantRoutes() {
   router.post('/find', (req, res, next) => {
     const { name, neighborhood, cuisine, priority, budget, ambience, veganMenu, glutenFree } = req.body;
 
-    // const query = {};
-    // if (name) {
-    //   query.name = name;
-    // }
-    // if ( neighborhood ) {
-    //   query.neighborhood = neighborhood
-    // }
-
-    Restaurant.find({ $or: [{ name: name }, { neighborhood: neighborhood }, { cuisine: cuisine }, { priority: priority }, { budget: budget }, {ambience: ambience}, {veganMenu: veganMenu}, {glutenFree: glutenFree}] }).collation({locale:'en',strength: 2}).sort({name:1})
+    const query = {};
+    if (name) {
+      query.name = name;
+    }
+    if (neighborhood) {
+      query.neighborhood = neighborhood;
+    }
+    if (cuisine) {
+      query.cuisine = cuisine;
+    }
+    if (priority) {
+      query.priority = priority;
+    }
+    if (budget) {
+      query.budget = budget;
+    }
+    if (ambience) {
+      query.ambience = ambience;
+    }
+    if (veganMenu) {
+      query.veganMenu = veganMenu;
+    }
+    if (glutenFree) {
+      query.glutenFree = glutenFree;
+    }
+    Restaurant.find(query).collation({locale:'en',strength: 2}).sort({name:1})
+    // Restaurant.find({ $or: [{ name: name }, { neighborhood: neighborhood }, { cuisine: cuisine }, { priority: priority }, { budget: budget }, {ambience: ambience}, {veganMenu: veganMenu}, {glutenFree: glutenFree}] }).collation({locale:'en',strength: 2}).sort({name:1})
       .then(foundRestaurants => {
         res.render('restaurants/restaurants-filtered.hbs', { foundRestaurants });
         console.log(foundRestaurants);
