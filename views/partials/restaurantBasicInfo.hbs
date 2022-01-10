@@ -1,17 +1,12 @@
-<div>
-  <div id="basic-info-container">
-    {{#each returnedRestaurants}}
-    <div id="restaurant-card">
+
+    <div id="restaurant-basic-info">
       <img src='{{this.image}}'>
       <a href="/restaurants/{{this.id}}">
         <h2>{{this.name}}</h2>
       </a>
       <p>Priority: {{this.priority}}</p>
-      <p>Cuisine: {{cuisine}}</p>
-      <p>Neighborhood: {{neighborhood}}</p>
-      <p>Budget: {{budget}}</p>
+      <p>Cuisine: {{this.cuisine}}</p>
+      <p>Neighborhood: {{this.neighborhood}}</p>
+      <p>Budget: {{this.budget}}</p>
   
     </div>
-    {{/each}}
-  </div>
-</div>

@@ -6,25 +6,15 @@
         {{/if}}
     </div>
 
-{{!-- <div id="restaurant-list-container">
+
     {{#each returnedRestaurants}}
-    <div id="restaurant-card">
-        <img src='{{image}}'>
-        <a href="/restaurants/{{id}}">
-            <h2>{{name}}</h2>
-        </a>
-        <p>Priority: {{priority}}</p>
-        <p>Cuisine: {{cuisine}}</p>
-        <p>Neighborhood: {{neighborhood}}</p>
-        <p>Budget: {{budget}}</p>
-
-    </div>
-    {{/each}}
-</div> --}}
-
-    <div>
+ 
         {{> restaurantBasicInfo }}
-    </div>
+
+    {{/each}}
+
+
+
 </div>
 
 <a href="/restaurants/new"> Create new restaurant here!</a>
