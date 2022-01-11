@@ -26,14 +26,14 @@ function restaurantRoutes() {
 
   router.get('/new', (req, res, next) => {
 
-    res.render('restaurants/new-restaurant', { budget: config.budget, veganMenu: config.boolean, glutenFree: config.boolean});
+    res.render('restaurants/new-restaurant', { neighborhood: config.neighborhood, cuisine: config.cuisine, budget: config.budget, priority: config.priority, ambience: config.ambience, veganMenu: config.veganMenu, glutenFree: config.glutenFree});
   });
 
   router.post('/new', (req, res, next) => {
-    const { name, neighborhood, cuisine, budget, ambience, priority, notes, veganMenu } = req.body;
+    const { name, neighborhood, cuisine, budget, ambience, priority, notes, veganMenu, glutenFree } = req.body;
     const userId = req.session.user._id;
     // async await
-    Restaurant.create({ userId, name, neighborhood, cuisine, budget, ambience, priority, notes, veganMenu })
+    Restaurant.create({ userId, name, neighborhood, cuisine, budget, ambience, priority, notes, veganMenu, glutenFree })
       .then(() => res.redirect('/restaurants'))
       .catch(error => {
         console.log('Error while creating restaurant occurred', error);
@@ -44,23 +44,41 @@ function restaurantRoutes() {
   // find restaurant (search all restaurants by criteria)
 
   router.get('/find', (req, res, next) => {
-    res.render('restaurants/find-restaurant');
+    res.render('restaurants/find-restaurant', {neighborhood: config.neighborhood, cuisine: config.cuisine, budget: config.budget, priority: config.priority, ambience: config.ambience, veganMenu: config.veganMenu, glutenFree: config.glutenFree});
   });
 
   router.post('/find', (req, res, next) => {
-    const { name, neighborhood, cuisine, priority, budget, ambience } = req.body;
-    // Restaurant.find({ $text: { $search: name } })
-    // const query = {};
-    // if (name) {
-    //   query.name = name;
-    // }
-    // if ( neighborhood ) {
-    //   query.neighborhood = neighborhood
-    // }
+    const { name, neighborhood, cuisine, priority, budget, ambience, veganMenu, glutenFree } = req.body;
 
-    Restaurant.find({ $or: [{ name: name }, { neighborhood: neighborhood }, { cuisine: cuisine }, { priority: priority }, { budget: budget }, {ambience: ambience}] }).collation({locale:'en',strength: 2}).sort({name:1})
+    const query = {};
+    if (name) {
+      query.name = name;
+    }
+    if (neighborhood) {
+      query.neighborhood = neighborhood;
+    }
+    if (cuisine) {
+      query.cuisine = cuisine;
+    }
+    if (priority) {
+      query.priority = priority;
+    }
+    if (budget) {
+      query.budget = budget;
+    }
+    if (ambience) {
+      query.ambience = ambience;
+    }
+    if (veganMenu) {
+      query.veganMenu = veganMenu;
+    }
+    if (glutenFree) {
+      query.glutenFree = glutenFree;
+    }
+    Restaurant.find(query).collation({locale:'en',strength: 2}).sort({name:1})
+    // Restaurant.find({ $or: [{ name: name }, { neighborhood: neighborhood }, { cuisine: cuisine }, { priority: priority }, { budget: budget }, {ambience: ambience}, {veganMenu: veganMenu}, {glutenFree: glutenFree}] }).collation({locale:'en',strength: 2}).sort({name:1})
       .then(foundRestaurants => {
-        res.render('restaurants/restaurants-filtered.hbs', { foundRestaurants /* , budget: config.budget */ });
+        res.render('restaurants/restaurants-filtered.hbs', { foundRestaurants });
         console.log(foundRestaurants);
       })
       .catch(error => console.log('Error while finding restaurants occurred', error));
@@ -93,16 +111,16 @@ function restaurantRoutes() {
 
     Restaurant.findById(id)
       .then(restaurantToEdit => {
-        res.render('restaurants/update-restaurant', { restaurantToEdit });
+        res.render('restaurants/update-restaurant', { restaurantToEdit, neighborhood: config.neighborhood, cuisine: config.cuisine, budget: config.budget, priority: config.priority, ambience: config.ambience, veganMenu: config.veganMenu, glutenFree: config.glutenFree });
       })
       .catch(error => next(error));
   });
 
   router.post('/:id/update', (req, res, next) => {
     const { id } = req.params; // check id
-    const { name, neighborhood, cuisine, budget, ambience, priority, notes } = req.body;
+    const { name, neighborhood, cuisine, budget, ambience, priority, veganMenu, glutenFree, notes } = req.body;
 
-    Restaurant.findByIdAndUpdate(id, { name, neighborhood, cuisine, budget, ambience, priority, notes })
+    Restaurant.findByIdAndUpdate(id, { name, neighborhood, cuisine, budget, ambience, priority, veganMenu, glutenFree, notes })
       .then(() => res.redirect('/restaurants'))
       .catch(error => console.log('Error while updating restaurant occurred', error));
   });

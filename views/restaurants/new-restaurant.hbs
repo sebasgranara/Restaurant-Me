@@ -7,34 +7,17 @@
 
     <label> Neighborhood:
         <select name="neighborhood">
-            <option value="TBE">TBE</option>
-            <option value="Raval">Raval</option>
-            <option value="Born">Born</option>
-            <option value="Barceloneta">Barceloneta</option>
-            <option value="Eixample Left Side">Eixample Left Side</option>
-            <option value="Eixample Right Side">Eixample Right Side</option>
-            <option value="Gracia">Gracia</option>
-            <option value="Poble Sec">Poble Sec</option>
-            <option value="Uptown">Uptown</option>
-            <option value="Sants">Sants</option>
-            <option value="Poble Nou">Poble Nou</option>
-            <option value="Other">Other</option>
+            {{#each neighborhood }}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
         </select>
     </label>
 
     <label> Cuisine:
         <select name="cuisine">
-            <option value="TBE">TBE</option>
-            <option value="Italian">Italian</option>
-            <option value="Japanese">Japanese</option>
-            <option value="Creative">Creative</option>
-            <option value="Venezuelan">Venezuelan</option>
-            <option value="Tapas">Tapas</option>
-            <option value="Chinese">Chinese</option>
-            <option value="Indian">Indian</option>
-            <option value="Mexican">Mexican</option>
-            <option value="Thai">Thai</option>
-            <option value="Other">Other</option>
+            {{#each cuisine }}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
         </select>
     </label>
 
@@ -46,41 +29,33 @@
         </select>
     </label>
 
-    {{!-- <label> Budget:
-        <select name="budget">
-            <option value="TBE">TBE</option>
-            <option value="10-20e">10-20e</option>
-            <option value="20-50e">20-50e</option>
-            <option value="51-100e">51-100e</option>
-            <option value="+100e">+100e</option>
+    <label> Priority:
+        <select name="priority">
+            {{#each priority }}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
         </select>
-    </label> --}}
-
-    <label>Priority:
-            <select name="priority">
-                <option value="TBE">TBE</option>
-                <option value="Top Priority">Top Priority</option>
-                <option value="Must Go">Must Go</option>
-                <option value="Maybe">Maybe</option>
-                <option value="If Nothing Better To Do">If Nothing Better To Do</option>
-            </select>
     </label>
 
-    <label>Ambience:
+    <label> Ambience:
         <select name="ambience">
-            <option value="TBE">TBE</option>
-            <option value="formal">Formal</option>
-            <option value="casual">Casual</option>
-            <option value="business">Business</option>
-            <option value="with friends">With Friends</option>
-            <option value="date">Date</option>
-            <option value="hip">Hip</option>
+            {{#each ambience }}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
         </select>
     </label>
 
     <label> Vegan Menu:
         <select name="veganMenu">
-            {{#each boolean }}
+            {{#each veganMenu }}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+        </select>
+    </label>
+
+    <label> Gluten Free Options:
+        <select name="glutenFree">
+            {{#each glutenFree }}
             <option value="{{this}}">{{this}}</option>
             {{/each}}
         </select>

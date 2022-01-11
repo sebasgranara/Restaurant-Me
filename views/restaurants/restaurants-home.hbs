@@ -1,27 +1,20 @@
-<div id="rest-user-container">
-    {{#if currentUser}}
-        <h1>{{ currentUser.name }}'s restaurants</h2>
-    {{/if}}
-</div>
+<div id="rest-list-container">
 
-{{!-- <div id="restaurant-list-container">
-    {{#each returnedRestaurants}}
-    <div id="restaurant-card">
-        <img src='{{image}}'>
-        <a href="/restaurants/{{id}}">
-            <h2>{{name}}</h2>
-        </a>
-        <p>Priority: {{priority}}</p>
-        <p>Cuisine: {{cuisine}}</p>
-        <p>Neighborhood: {{neighborhood}}</p>
-        <p>Budget: {{budget}}</p>
-
+    <div id="rest-user-container">
+        {{#if currentUser}}
+            <h1>{{ currentUser.name }}'s restaurants</h2>
+        {{/if}}
     </div>
-    {{/each}}
-</div> --}}
 
-<div>
-    {{> restaurantBasicInfo }}
+
+    {{#each returnedRestaurants}}
+ 
+        {{> restaurantBasicInfo }}
+
+    {{/each}}
+
+
+
 </div>
 
 <a href="/restaurants/new"> Create new restaurant here!</a>
