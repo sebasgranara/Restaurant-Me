@@ -49,8 +49,10 @@ function restaurantRoutes() {
 
   router.post('/find', (req, res, next) => {
     const { name, neighborhood, cuisine, priority, budget, ambience, veganMenu, glutenFree } = req.body;
+    const userId = req.session.user._id;
+    const currentUser = req.session.user;
 
-    const query = {};
+    const query = {userId};
     if (name) {
       query.name = name;
     }
