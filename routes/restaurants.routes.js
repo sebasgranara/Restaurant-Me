@@ -19,13 +19,12 @@ function restaurantRoutes() {
         res.render('restaurants/restaurants-home.hbs', { returnedRestaurants, currentUser });
         console.log(returnedRestaurants);
       })
-      .catch(error => console.log('Error while finding restaurants occurred', error)); // send to eeror view
+      .catch(error => next(error));
   });
 
   // create new restaurant
 
   router.get('/new', (req, res, next) => {
-
     res.render('restaurants/new-restaurant', { neighborhood: config.neighborhood, cuisine: config.cuisine, budget: config.budget, priority: config.priority, ambience: config.ambience, veganMenu: config.veganMenu, glutenFree: config.glutenFree});
   });
 
@@ -35,10 +34,7 @@ function restaurantRoutes() {
     // async await
     Restaurant.create({ userId, name, neighborhood, cuisine, budget, ambience, priority, notes, veganMenu, glutenFree })
       .then(() => res.redirect('/restaurants'))
-      .catch(error => {
-        console.log('Error while creating restaurant occurred', error);
-        res.redirect('/restaurants/new'); //send to error view not redirect
-      });
+      .catch(error => next(error));
   });
 
   // find restaurant (search all restaurants by criteria)
@@ -50,9 +46,8 @@ function restaurantRoutes() {
   router.post('/find', (req, res, next) => {
     const { name, neighborhood, cuisine, priority, budget, ambience, veganMenu, glutenFree } = req.body;
     const userId = req.session.user._id;
-    const currentUser = req.session.user;
 
-    const query = {userId};
+    const query = { userId };
     if (name) {
       query.name = name;
     }
@@ -78,12 +73,11 @@ function restaurantRoutes() {
       query.glutenFree = glutenFree;
     }
     Restaurant.find(query).collation({locale:'en',strength: 2}).sort({name:1})
-    // Restaurant.find({ $or: [{ name: name }, { neighborhood: neighborhood }, { cuisine: cuisine }, { priority: priority }, { budget: budget }, {ambience: ambience}, {veganMenu: veganMenu}, {glutenFree: glutenFree}] }).collation({locale:'en',strength: 2}).sort({name:1})
       .then(foundRestaurants => {
         res.render('restaurants/restaurants-filtered.hbs', { foundRestaurants });
         console.log(foundRestaurants);
       })
-      .catch(error => console.log('Error while finding restaurants occurred', error));
+      .catch(error => next(error));
   });
 
   // show restaurant details
@@ -103,7 +97,7 @@ function restaurantRoutes() {
     const { id } = req.params; // check if id is correct
     Restaurant.findByIdAndDelete(id)
       .then(() => res.redirect('/restaurants'))
-      .catch(error => console.log('Error while deleting restaurant occurred')); // send to error middleware
+      .catch(error => next(error));
   });
 
   // update restaurant
@@ -124,7 +118,7 @@ function restaurantRoutes() {
 
     Restaurant.findByIdAndUpdate(id, { name, neighborhood, cuisine, budget, ambience, priority, veganMenu, glutenFree, notes })
       .then(() => res.redirect('/restaurants'))
-      .catch(error => console.log('Error while updating restaurant occurred', error));
+      .catch(error => next(error));
   });
 
   return router;

@@ -19,7 +19,7 @@ body {
 
 body {
   padding: 30px;
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  font: 18px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
  
 a {
@@ -41,7 +41,7 @@ form label {
   width: 100%;
 }
  
-form input,
+/* form input,
 form button {
   box-sizing: border-box;
   font-size: 14px;
@@ -49,9 +49,9 @@ form button {
   padding: 4px;
   width: 100%;
   margin-bottom: 20px;
-}
+} */
  
-form button {
+/* form button {
   background: #43a3e6;
   border: 1px solid #43a3e6;
   border-radius: 4px;
@@ -64,7 +64,7 @@ form button {
   text-transform: uppercase;
   transition: 0.3s ease background;
   width: 100%;
-}
+} */
  
 form button:hover {
   background: #fff;
