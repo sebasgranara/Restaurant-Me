@@ -1,5 +1,6 @@
-<h2 class='p10b'>{{foundRestaurant.name}} details:</h2>
+
 <div id="restaurant-card-container">
+    <h2 class='p10b'>{{foundRestaurant.name}} details:</h2>
     <div>
         <img class='p10b' src='{{foundRestaurant.image}}'>
 
@@ -16,12 +17,11 @@
     </div>
 
     <div id='button-container'>
-        <form class='rest-form' method="POST" action="/restaurants/{{foundRestaurant.id}}/delete">
-            <button class='rest-button'>Delete restaurant</button>
-        </form>
-
         <form class='rest-form' method="GET" action="/restaurants/{{foundRestaurant.id}}/update">
             <button class='rest-button' type="submit">Update restaurant</button>
+        </form>
+        <form id="form1" class='rest-form' method="POST" action="/restaurants/{{foundRestaurant.id}}/delete">
+            <button class='rest-button'>Delete restaurant </button>
         </form>
     </div>
 </div>
