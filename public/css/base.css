@@ -28,19 +28,19 @@ a {
   font-size: 1.5em;
 }
  
-form {
+/* form {
   margin: 30px auto;
   max-width: 100%;
   padding: 10px;
-}
+} */
  
-form label {
+/* form label {
   color: #444444;
   display: inline-block;
   margin-bottom: 10px;
   text-align: center;
   width: 100%;
-}
+} */
  
 /* form input,
 form button {
@@ -52,9 +52,11 @@ form button {
   margin-bottom: 20px;
 } */
  
-form button {
+/* form button {
   background: #444444;
   border: 1px solid black
+} */
+
 /* form button {
   background: #43a3e6;
   border: 1px solid #43a3e6;
