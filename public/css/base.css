@@ -19,20 +19,28 @@ body {
 
 body {
   padding: 30px;
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  font: 16px 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-size: 1.5rem;
 }
  
 a {
   color: #00b7ff;
   text-decoration: none;
-  font-size: 1.5em;
-}
+  font-size: 1.5rem;
+} /*revisar clases*/
  
 form {
   margin: 30px auto;
   max-width: 100%;
   padding: 10px;
-}
+}/*revisar clases*/
  
 form label {
   color: #444444;
@@ -40,7 +48,7 @@ form label {
   margin-bottom: 10px;
   text-align: center;
   width: 100%;
-}
+} /*revisar clases*/
  
 form input,
 form button {
@@ -50,7 +58,7 @@ form button {
   padding: 4px;
   width: 100%;
   margin-bottom: 20px;
-}
+}/*revisar clases*/
  
 form button {
   background: #444444;
@@ -65,13 +73,15 @@ form button {
   text-transform: uppercase;
   transition: 0.3s ease background;
   width: 100%;
-}
+}/*revisar clases*/
+
+/* crear clase especifica para los elementos sin punto y # para auth */
  
 form button:hover {
   background: #fff;
   color: #43a3e6;
   transition: 0.3s ease background;
-}
+}/*revisar clases*/
  
 .error {
   background: #f02b63;
@@ -87,11 +97,11 @@ ul {
   height: 30px;
   padding: 1em 0;
   list-style-type: none;
-}
+}/*revisar clases*/
  
 ul li {
   line-height: 20px;
-}
+}/*revisar clases*/
 
 img {
   max-width: 100%;
@@ -100,17 +110,17 @@ img {
 #to-right {
   padding: 1.5em;
   float: right;
-}
+} /*revisar clases*/
  
 #to-right span {
   color: #43a3e6;
   font-size: 1.5em;
-}
+}/*revisar clases*/
  
 #form h2 {
   display: flex;
   justify-content: center;
-}
+} /*revisar clases*/
  
 /* #to-left {
   float: left;
