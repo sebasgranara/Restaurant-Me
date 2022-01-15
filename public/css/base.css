@@ -20,6 +20,7 @@ body {
 body {
   padding: 30px;
   font: 16px 'Lucida Grande', Helvetica, Arial, sans-serif;
+<<<<<<< HEAD
 }
 
 h1 {
@@ -28,6 +29,8 @@ h1 {
 
 h2 {
   font-size: 1.5rem;
+=======
+>>>>>>> cardstyle
 }
  
 a {
@@ -36,13 +39,13 @@ a {
   font-size: 1.5rem;
 } /*revisar clases*/
  
-form {
+/* form {
   margin: 30px auto;
   max-width: 100%;
   padding: 10px;
-}/*revisar clases*/
+} */
  
-form label {
+/* form label {
   color: #444444;
   display: inline-block;
   margin-bottom: 10px;
@@ -50,7 +53,7 @@ form label {
   width: 100%;
 } /*revisar clases*/
  
-form input,
+/* form input,
 form button {
   box-sizing: border-box;
   font-size: 14px;
@@ -60,9 +63,14 @@ form button {
   margin-bottom: 20px;
 }/*revisar clases*/
  
-form button {
+/* form button {
   background: #444444;
   border: 1px solid black
+} */
+
+/* form button {
+  background: #43a3e6;
+  border: 1px solid #43a3e6;
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
@@ -76,6 +84,7 @@ form button {
 }/*revisar clases*/
 
 /* crear clase especifica para los elementos sin punto y # para auth */
+} */
  
 form button:hover {
   background: #fff;

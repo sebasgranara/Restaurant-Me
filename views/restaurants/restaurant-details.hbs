@@ -1,7 +1,8 @@
-<h2>{{foundRestaurant.name}} details:</h2>
+
 <div id="restaurant-card-container">
+    <h2 class='p10b'>{{foundRestaurant.name}} details:</h2>
     <div>
-        <img src='{{foundRestaurant.image}}'>
+        <img class='p10b' src='{{foundRestaurant.image}}'>
 
         
         <p>Priority: {{foundRestaurant.priority}}</p>
@@ -15,17 +16,12 @@
         <br>
     </div>
 
-{{!-- <div>
-    {{> restaurantBasicInfo }}
-</div> --}}
-
-    <div>
-        <form method="POST" action="/restaurants/{{foundRestaurant.id}}/delete">
-            <button>Delete restaurant</button>
+    <div id='button-container'>
+        <form class='rest-card-form' method="GET" action="/restaurants/{{foundRestaurant.id}}/update">
+            <button class='rest-card-button' type="submit">Update restaurant</button>
         </form>
-
-        <form method="GET" action="/restaurants/{{foundRestaurant.id}}/update">
-            <button type="submit">Update restaurant</button>
+        <form id="form1" class='rest-card-form' method="POST" action="/restaurants/{{foundRestaurant.id}}/delete">
+            <button class='rest-card-button'>Delete restaurant </button>
         </form>
     </div>
 </div>
