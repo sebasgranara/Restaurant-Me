@@ -1,19 +1,19 @@
-{{!-- <nav>
+<nav>
     <ul>
-        <li id="to-left">
+        {{!-- <li id="to-left">
             <p><a href="/"> Home/Root </a></p>
-        </li>
+        </li> --}}
         <li id="to-right">
-            <a href="/signup">Signup</a> <span> | </span>
-            <a href="/login">Login</a> <span> | </span>
+            <a href="/signup">Signup</a> 
+            {{!-- <a href="/login">Login</a> <span> | </span>
             <form id="logout-form" action="/logout" method="POST">
                 <button>Logout</button>
-            </form>
+            </form> --}}
         </li>
     </ul>
-</nav> --}}
+</nav>
 
-<div id="form">
+<div class="authform">
     <h2>Log in here!</h2>
     <form action="/login" method="POST">
 
