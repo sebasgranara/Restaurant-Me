@@ -1,10 +1,14 @@
-<p><a href="/"> Welcome to RestaurantMe!</a></p>
+<p class="title"><a href="/"> RestaurantMe</a></p>
+
+<div>
+    <img src="/images/restaurant/default-restaurant.png" alt="restaurant">
+</div>
 
 <nav>
     <ul>
-        <li id="to-right">
-             {{!-- <a href="/signup">Signup</a> <span> | </span> --}}
-            <a id="logout-form" href="/login">Login</a> <span>  </span> 
+        <li id="to-center">
+            <a href="/signup">Join us</a> <span> | </span>
+            <a  href="/login">Login</a> <span> </span>
             {{!-- <form id="logout-form" action="/logout" method="POST">
                 <button>Logout</button>
             </form> --}}
@@ -13,10 +17,10 @@
 </nav>
 
 <div class="authform">
-    <h2>Sign up </h2>
+    {{!-- <h2>Sign up </h2> --}}
     <form action="/signup" method="POST">
 
-        <label> User name
+        <label> User name  
             <input type="text" name="name" placeholder="user name" />
         </label>
 

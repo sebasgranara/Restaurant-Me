@@ -1,15 +1,15 @@
+.title {
+  color: #444444;
+  display: inline-block;
+  margin-bottom: 10px;
+  text-align: center; 
+}
 
-a {
-  /* color: #00b7ff;
-  text-decoration: none;
-  font-size: 1.5rem; */
-} /*revisar clases*/
- 
 .authform {
-  margin: 30px auto;
+  margin: 60px auto;
   max-width: 100%;
   padding: 10px;
-}/*revisar clases*/
+}
  
 .authform label {
   color: #444444;
@@ -17,8 +17,7 @@ a {
   margin-bottom: 10px;
   text-align: center;
   width: 100%;
-
-} /*revisar clases*/
+} 
  
 .authform input,
 .authform button {
@@ -28,7 +27,7 @@ a {
   padding: 4px;
   width: 100%;
   margin-bottom: 20px;
-}/*revisar clases*/
+}
  
 .authform button {
   background: #444444;
@@ -43,16 +42,8 @@ a {
   text-transform: uppercase;
   transition: 0.3s ease background;
   width: 100%;
-}/*revisar clases*/
+}
 
-/* crear clase especifica para los elementos sin punto y # para auth */
- 
-/* .authform button:hover {
-  background: #fff;
-  color: #43a3e6;
-  transition: 0.3s ease background;
-} */
- 
 .error {
   background: #f02b63;
   box-sizing: border-box;
@@ -72,39 +63,21 @@ ul {
 ul li {
   line-height: 20px;
 }
-
-img {
-  max-width: 100%;
-}
  
 #to-right {
   padding: 1.5em;
   float: right;
+  margin-top: 10px;
 } 
- 
-/* #to-right span {
-  color: #43a3e6;
-  font-size: 1.5em;
-} */
- 
-/* #form h2 {
+
+#to-center {
+  padding: 1.5em;
   display: flex;
-  justify-content: center;
-}  */
- 
-
- 
-/* #logout-form {
-  display: inline;
-}
-
-#logout-form {
-  display: inline;
-}
- 
-#logout-form button {
-  width: 120px;
-} */
+  justify-content:space-around;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+} 
 
 .nav {
     position: fixed;
@@ -118,8 +91,7 @@ img {
     /* overflow-x: auto; */
     flex-direction: row;
     justify-content:center;
-    align-items: center;
-    
+    align-items: center; 
 }
 
 .nav__link {
@@ -138,7 +110,6 @@ img {
     -webkit-tap-highlight-color: transparent;
     transition: background-color 0.1s ease-in-out;
 }
-
 
 .nav__icon {
     font-size: 18px;
