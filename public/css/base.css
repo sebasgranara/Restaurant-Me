@@ -21,12 +21,16 @@ body {
   padding: 30px;
   font: 16px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
- 
-a {
+
+img {
+  max-width: 100%;
+}
+
+/* a {
   color: #00b7ff;
   text-decoration: none;
   font-size: 1.5em;
-}
+} */
  
 /* form {
   margin: 30px auto;
@@ -71,7 +75,7 @@ form button {
   transition: 0.3s ease background;
   width: 100%;
 } */
- 
+/*  
 form button:hover {
   background: #fff;
   color: #43a3e6;
@@ -98,9 +102,7 @@ ul li {
   line-height: 20px;
 }
 
-img {
-  max-width: 100%;
-}
+
  
 #to-right {
   padding: 1.5em;
@@ -115,7 +117,7 @@ img {
 #form h2 {
   display: flex;
   justify-content: center;
-}
+} */
  
 /* #to-left {
   float: left;
@@ -128,7 +130,7 @@ img {
   font-size: 2em;
 } */
  
-#logout-form {
+/* #logout-form {
   display: inline;
 }
 
@@ -138,7 +140,7 @@ img {
  
 #logout-form button {
   width: 120px;
-}
+} */
 
 .nav {
     position: fixed;
