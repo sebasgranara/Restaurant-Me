@@ -1,4 +1,4 @@
-<h2>update restaurant {{restaurantToEdit.name}} info here</h2>
+<h2>update restaurant {{restaurantToEdit.name}} here</h2>
 <form class='rest-form' action="/restaurants/{{restaurantToEdit.id}}/update" method="post">
     <label> Name:
         <input type="text" name="name" value="{{restaurantToEdit.name}}" />
@@ -77,5 +77,3 @@
 </form>
 
 {{> navbar }}
-
-<a href="/restaurants"> List of all restaurants here!</a>
