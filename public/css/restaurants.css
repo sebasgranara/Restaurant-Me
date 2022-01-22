@@ -91,3 +91,8 @@ img {
 #restaurant-card-container span {
   font-weight: bold;
 }
+
+#restaurant-basic-info {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
